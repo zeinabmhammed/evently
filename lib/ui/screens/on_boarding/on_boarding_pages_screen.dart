@@ -1,7 +1,10 @@
 import 'package:evently/ui/design/design.dart';
+import 'package:evently/ui/screens/login/login_screen.dart';
 import 'package:evently/ui/screens/on_boarding/model/on_boarding_data.dart';
 import 'package:evently/ui/screens/on_boarding/model/widget/dot_indicator.dart';
 import 'package:evently/ui/screens/on_boarding/model/widget/page_view_item_widget.dart';
+import 'package:evently/ui/screens/on_boarding/on_boarding_screen.dart';
+import 'package:evently/ui/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingPagesScreen extends StatefulWidget {
@@ -69,6 +72,13 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
                         curve: Curves.easeInOut,
                       );
                     }
+                    else {
+                      Navigator.pop(context,
+                        MaterialPageRoute(
+                          builder: (context) => const OnBoardingScreen(),
+                        ),
+                      );
+                    }
                   },
                   icon: const Icon(Icons.arrow_circle_left_outlined,
                       color: AppColors.lightPrimary, size: 37,
@@ -88,11 +98,17 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
                 IconButton(
                   onPressed: () {
                     if (_currentPage <
-                        OnBoardingData.onBoardingList.length - 1) {
+                        OnBoardingData.onBoardingList.length -1) {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.easeInOut,
                       );
+                    }
+                    else {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ));
                     }
                   },
                   icon: const Icon(Icons.arrow_circle_right_outlined,

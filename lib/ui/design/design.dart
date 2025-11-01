@@ -7,6 +7,7 @@ class AppColors {
   static const Color backgroundColor = Color(0xFFF2FEFF);
   static const Color black = Color(0xFF1C1C1C);
   static const Color darkBackground = Color(0xFF101127);
+  static const Color grey = Color(0xFF7B7B7B);
 }
 
 class AppImages {
@@ -45,14 +46,21 @@ class AppThemes {
     ),
 
     textTheme: TextTheme(
-      bodyLarge: GoogleFonts.jockeyOne(
+
+      bodyLarge: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
+        fontWeight: FontWeight.w700,
+        fontSize: 24,
+      ),
+
+      bodyMedium: GoogleFonts.inter(
         color: Colors.black,
         fontWeight: FontWeight.bold,
-        fontSize: 20,
+        fontSize: 16,
       ),
 
       titleLarge: GoogleFonts.inter(
-        color: Colors.black,
+        color: AppColors.lightPrimary,
         fontSize: 24,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
@@ -71,6 +79,28 @@ class AppThemes {
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
       ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.grey),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.grey),
+      ),
+      labelStyle: GoogleFonts.inter(
+          color: AppColors.grey,
+          fontSize: 16,
+          fontWeight: FontWeight.w500),
+      hintStyle: GoogleFonts.inter(
+          color: AppColors.grey,
+          fontSize: 16,
+          fontWeight: FontWeight.w500),
+     contentPadding: EdgeInsets.all(16.0),
+
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
