@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +27,29 @@ class AppImages {
   //forget password
   static const String forgetPassword = "assets/images/forgetPasswordPic.png";
 
+  //homeScreen
+  static const String birthdayCard = "assets/images/birthday_home.png";
+  static const String sportCard = "assets/images/sport_home.png";
+  static const String meetingCard = "assets/images/meeting_home.png";
+  static const String gamingCard = "assets/images/gaming_home.png";
+  static const String eatingCard = "assets/images/eating_home.png";
+  static const String holidayCard = "assets/images/holiday_home.png";
+  static const String exhibitionCard = "assets/images/ehibition_home.png";
+  static const String workShopCard = "assets/images/workshop_home.png";
+  static const String bookClubCard = "assets/images/BookClub_home.png";
+
+
   //Svg images
+  // icons
+  static const String mapIcon = "assets/svg/map_icon.svg";
+  static const String homeIcon = "assets/svg/Home 1.svg";
+  static const String heartIcon = "assets/svg/Heart.svg";
+  static const String profileIcon = "assets/svg/profile.svg";
+
+  static const String homeFill = "assets/svg/fill_home.svg";
+  static const String mapFill = "assets/svg/fill_map.svg";
+  static const String heartFill = "assets/svg/fill_heart.svg";
+  static const String profileFill = "assets/svg/fill_profile.svg";
 }
 
 class AppThemes {
@@ -118,6 +142,7 @@ class AppThemes {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: AppColors.backgroundColor,
       backgroundColor: AppColors.lightPrimary,
       selectedIconTheme: IconThemeData(
         color: AppColors.backgroundColor,
