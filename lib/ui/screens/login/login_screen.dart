@@ -1,41 +1,37 @@
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/routes.dart';
 import 'package:evently/ui/common/custom_form_Field.dart';
 import 'package:evently/ui/common/language_switcher.dart';
 import 'package:evently/ui/common/validators.dart';
-import 'package:evently/ui/design/design.dart';
 import 'package:evently/ui/providers/auth_provider.dart';
 import 'package:evently/ui/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/auth_provider.dart';
-
-
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+ const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool isLoading=false;
-
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Login",
+          AppLocalizations.of(context)!.login,
           style: Theme.of(
             context,
           ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400),
@@ -43,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, AppRoutes.OnBoardingScreen.route);
           },
           icon: Icon(
             Icons.arrow_back_rounded,
@@ -55,9 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height:20),
+          SizedBox(height: 20),
           Center(
-            child: Image.asset(AppImages.splashLogo, width: 163, height: 186),
+            child: Image.asset(AppAssets.splashLogo, width: 163, height: 186),
           ),
           SizedBox(height: 20),
           Form(
@@ -65,31 +61,31 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 CustomFormField(
-                  label: "Email",
+                  label: AppLocalizations.of(context)!.email,
                   prefixIcon: Icons.email_rounded,
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Email";
+                      return AppLocalizations.of(context)!.please_enter_email;
                     }
                     if (!isValidEmail(text)) {
-                      return "Please Enter Valid Email";
+                      return AppLocalizations.of(context)!.please_enter_valid_email;
                     }
                   },
                 ),
                 CustomFormField(
-                  label: "Password",
+                  label: AppLocalizations.of(context)!.password,
                   controller: passwordController,
                   prefixIcon: Icons.lock,
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Your Password";
+                      return AppLocalizations.of(context)!.please_enter_your_password;
                     }
                     if ((text?.length ?? 0) < 6) {
-                      return "Password must be at least 6 characters";
+                      return AppLocalizations.of(context)!.password_must_be_at_least_6_characters;
                     }
                   },
                 ),
@@ -97,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Row(
-         mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
                 onPressed: () {
@@ -109,14 +105,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 16.0),
                   child: Text(
-                    "Forget Password?",
+                    AppLocalizations.of(context)!.forget_password,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      color: AppColors.lightPrimary
-                      ),
-
-                                ),
+                      color: AppColors.lightPrimary,
+                    ),
+                  ),
                 ),
-    )],
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -124,46 +120,46 @@ class _LoginScreenState extends State<LoginScreen> {
               vertical: 8.0,
             ),
             child: ElevatedButton(
-              onPressed: isLoading? null: () {
-               login();
-              },
+              onPressed: isLoading
+                  ? null
+                  : () {
+                      login();
+                    },
               style: Theme.of(context).elevatedButtonTheme.style,
-              child: isLoading? Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  Text(
-                      "Logging in...",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.grey,
+              child: isLoading
+                  ? Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        Text(
+                          AppLocalizations.of(context)!.logging_in,
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(color: AppColors.grey),
+                        ),
+                      ],
                     )
-                  ),
-                ],
-              )
                   : Text(
-                "Login",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+                      AppLocalizations.of(context)!.login,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Don’t Have Account ?",
+                AppLocalizations.of(context)!.don_t_have_account,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (_) => RegisterScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => RegisterScreen()),
                   );
                 },
                 child: Text(
-                  "Create Account",
+                  AppLocalizations.of(context)!.create_account,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.lightPrimary,
                   ),
@@ -172,7 +168,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50.0,vertical: 8.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 50.0,
+              vertical: 8.0,
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -182,14 +181,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     endIndent: 15,
                   ),
                 ),
-                Text(
-                  "Or",
-                  style: TextStyle(color: AppColors.lightPrimary),
-                ),
+                Text(AppLocalizations.of(context)!.or
+                    , style: TextStyle(color: AppColors.lightPrimary)),
                 Expanded(
                   child: Divider(
                     thickness: 1,
-                    color:AppColors.lightPrimary,
+                    color: AppColors.lightPrimary,
                     indent: 15,
                   ),
                 ),
@@ -202,17 +199,16 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () async {
                 try {
                   final userCredential = await signInWithGoogle();
-                  print("Login successful: ${userCredential.user?.displayName}");
+                  print(
+                    "Login successful: ${userCredential.user?.displayName}",
+                  );
                 } catch (e) {
                   print("Error during login: $e");
                 }
               },
-              icon: Image.asset(
-                'assets/images/google.png',
-                height: 25,
-              ),
+              icon: Image.asset('assets/images/google.png', height: 25),
               label: Text(
-                isLoading ? '...Logging in' : 'Login With Google',
+                isLoading ? AppLocalizations.of(context)!.logging_in : AppLocalizations.of(context)!.login_with_google,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: AppColors.lightPrimary,
                 ),
@@ -220,15 +216,13 @@ class _LoginScreenState extends State<LoginScreen> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.backgroundColor,
                 shape: RoundedRectangleBorder(
-                    side: BorderSide(color: AppColors.lightPrimary),
-                    borderRadius: BorderRadius.circular(16)
+                  side: BorderSide(color: AppColors.lightPrimary),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 12),
-
               ),
             ),
           ),
-
 
           Center(child: LanguageSwitcher()),
         ],
@@ -243,7 +237,10 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isLoading = true;
     });
-    AppAuthProvider provider = Provider.of<AppAuthProvider>(context, listen: false);
+    AppAuthProvider provider = Provider.of<AppAuthProvider>(
+      context,
+      listen: false,
+    );
     AuthResponse response = await provider.login(
       emailController.text,
       passwordController.text,
@@ -251,11 +248,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.success) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("Logged in Successfully")));
-      Navigator.pushReplacementNamed(
-        context,
-        AppRoutes.HomeScreen.route,
-      );
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.logged_in_successfully)));
+      Navigator.pushReplacementNamed(context, AppRoutes.HomeScreen.route);
     } else {
       handleAuthError(response);
     }
@@ -272,10 +266,10 @@ class _LoginScreenState extends State<LoginScreen> {
     String errorMessage;
     switch (response.failure) {
       case AuthFailure.invalidCredential:
-        errorMessage = "Wrong Email Or Password";
+        errorMessage = AppLocalizations.of(context)!.wrong_email_or_password;
         break;
       default:
-        errorMessage = "Something went wrong";
+        errorMessage = AppLocalizations.of(context)!.something_went_wrong;
         break;
     }
     ScaffoldMessenger.of(

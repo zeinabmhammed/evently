@@ -1,9 +1,7 @@
-import 'package:evently/ui/design/design.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
 typedef Validator = String? Function(String?);
-
 class CustomFormField extends StatefulWidget {
   String label;
   IconData prefixIcon;
@@ -19,7 +17,8 @@ class CustomFormField extends StatefulWidget {
     this.isPassword = false,
     this.validator,
     this.controller,
-    super.key});
+    super.key,
+  });
 
   @override
   State<CustomFormField> createState() => _CustomFormFieldState();
@@ -38,11 +37,17 @@ class _CustomFormFieldState extends State<CustomFormField> {
             validator: widget.validator,
             keyboardType: widget.keyboardType,
             obscureText: widget.isPassword && secureText,
-            cursorColor: AppColors.lightPrimary,
+            cursorColor: Theme.of(context).colorScheme.primary,
+            style: TextStyle(
+              color: AppColors.lightPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
             decoration: InputDecoration(
               labelText: widget.label,
               prefixIcon: Icon(widget.prefixIcon,
-              color: Colors.grey,),
+                color: Theme.of(context).iconTheme.color,
+              ),
               suffixIcon: widget.isPassword==true ?
               InkWell(
                 onTap: () {

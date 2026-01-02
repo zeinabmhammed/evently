@@ -1,10 +1,11 @@
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/routes.dart';
 import 'package:evently/ui/common/custom_form_Field.dart';
 import 'package:evently/ui/common/language_switcher.dart';
 import 'package:evently/ui/common/validators.dart';
-import 'package:evently/ui/design/design.dart';
 import 'package:evently/ui/providers/auth_provider.dart';
-import 'package:evently/ui/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,15 +27,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool isLoading=false;
-
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Register",
+          AppLocalizations.of(context)!.register,
           style: Theme.of(
             context,
           ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400),
@@ -54,9 +54,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height:10),
+          SizedBox(height: 10),
           Center(
-            child: Image.asset(AppImages.splashLogo, width: 163, height: 186),
+            child: Image.asset(AppAssets.splashLogo, width: 163, height: 186),
           ),
           SizedBox(height: 10),
           Form(
@@ -64,58 +64,66 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               children: [
                 CustomFormField(
-                  label: "Name",
+                  label: AppLocalizations.of(context)!.name,
                   prefixIcon: Icons.person,
                   controller: nameController,
                   keyboardType: TextInputType.name,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Name";
+                      return AppLocalizations.of(context)!.please_enter_name;
                     }
                     return null;
                   },
                 ),
                 CustomFormField(
-                  label: "Email",
+                  label: AppLocalizations.of(context)!.email,
                   prefixIcon: Icons.email_rounded,
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Email";
+                      return AppLocalizations.of(context)!.please_enter_email;
                     }
                     if (!isValidEmail(text)) {
-                      return "Please Enter Valid Email";
+                      return AppLocalizations.of(
+                        context,
+                      )!.please_enter_valid_email;
                     }
                   },
                 ),
                 CustomFormField(
-                  label: "Password",
+                  label: AppLocalizations.of(context)!.password,
                   controller: passwordController,
                   prefixIcon: Icons.lock,
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Your Password";
+                      return AppLocalizations.of(
+                        context,
+                      )!.please_enter_your_password;
                     }
                     if ((text?.length ?? 0) < 6) {
-                      return "Password must be at least 6 characters";
+                      return AppLocalizations.of(
+                        context,
+                      )!.password_must_be_at_least_6_characters;
                     }
                   },
                 ),
                 CustomFormField(
-                  label: "Re Password",
+                  label: AppLocalizations.of(context)!.re_password,
                   controller: rePasswordController,
                   prefixIcon: Icons.lock,
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   validator: (text) {
                     if (text?.trim().isEmpty == true) {
-                      return "Please Enter Your Password";
+                      return AppLocalizations.of(
+                        context,
+                      )!.please_enter_your_password;
                     }
                     if (passwordController.text != rePasswordController.text) {
-                      return "Password doesn't match";
+                      return AppLocalizations.of(context)!.does_not_match;
                     }
                   },
                 ),
@@ -128,33 +136,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
               vertical: 8.0,
             ),
             child: ElevatedButton(
-              onPressed: isLoading? null: () {
-                createAccount();
-              },
+              onPressed: isLoading
+                  ? null
+                  : () {
+                      createAccount();
+                    },
               style: Theme.of(context).elevatedButtonTheme.style,
-              child: isLoading? Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  Text(
-                    "Creating Account",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppColors.grey,
+              child: isLoading
+                  ? Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        Text(
+                          AppLocalizations.of(context)!.creating_account,
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(color: AppColors.grey),
+                        ),
+                      ],
                     )
-                  ),
-                ],
-              )
                   : Text(
-                "Create Account",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+                      AppLocalizations.of(context)!.create_account,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Already Have Account ?",
+                AppLocalizations.of(context)!.have_account,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               TextButton(
@@ -165,7 +175,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   );
                 },
                 child: Text(
-                  "Login",
+                  AppLocalizations.of(context)!.login,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: AppColors.lightPrimary,
                   ),
@@ -186,7 +196,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       isLoading = true;
     });
-    AppAuthProvider provider = Provider.of<AppAuthProvider>(context, listen: false);
+    AppAuthProvider provider = Provider.of<AppAuthProvider>(
+      context,
+      listen: false,
+    );
     AuthResponse response = await provider.register(
       emailController.text,
       passwordController.text,
@@ -195,11 +208,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (response.success) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("User Registered Successfully")));
-      Navigator.pushReplacementNamed(
-        context,
-        AppRoutes.HomeScreen.route,
-      );
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.user_registered_successfully)));
+      Navigator.pushReplacementNamed(context, AppRoutes.HomeScreen.route);
     } else {
       handleAuthError(response);
     }
@@ -216,10 +226,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     String errorMessage;
     switch (response.failure) {
       case AuthFailure.invalidCredential:
-        errorMessage = "Wrong Email Or Password";
+        errorMessage = AppLocalizations.of(context)!.wrong_email_or_password;
         break;
       default:
-        errorMessage = "Something went wrong";
+        errorMessage = AppLocalizations.of(context)!.something_went_wrong;
         break;
     }
     ScaffoldMessenger.of(

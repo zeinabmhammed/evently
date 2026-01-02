@@ -1,22 +1,20 @@
 import 'package:evently/ui/common/app_shared_preferences.dart';
 import 'package:flutter/material.dart';
 
-class LanguageProvider extends ChangeNotifier{
+class LanguageProvider extends ChangeNotifier {
   late Locale _locale;
 
-  AppSharedPreferences _appSettingsPreferences = AppSharedPreferences.getInstance();
-  LanguageProvider(){
+  final AppSharedPreferences _appSettingsPreferences =
+      AppSharedPreferences.getInstance();
+  LanguageProvider() {
     _locale = _appSettingsPreferences.getCurrentLocale();
   }
 
-  List<Locale> getSupportedLocals(){
-    return [
-      Locale('en'),
-      Locale('ar')
-    ];
+  List<Locale> getSupportedLocals() {
+    return [Locale('en'), Locale('ar')];
   }
 
-  Locale getSelectedLocale(){
+  Locale getSelectedLocale() {
     return _locale;
   }
 
@@ -25,6 +23,5 @@ class LanguageProvider extends ChangeNotifier{
     _appSettingsPreferences.saveLocale(_locale);
 
     notifyListeners();
-
   }
 }

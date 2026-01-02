@@ -1,4 +1,4 @@
-import 'package:evently/ui/design/design.dart';
+import 'package:evently/core/resources/app_assets.dart';
 import 'package:evently/ui/screens/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Image.asset(AppImages.splashLogo, height: 186)),
+          Center(child: Image.asset(AppAssets.splashLogo, height: 186)),
         ],
       ),
     );

@@ -1,4 +1,5 @@
-import 'package:evently/ui/design/design.dart';
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/ui/screens/login/login_screen.dart';
 import 'package:evently/ui/screens/on_boarding/model/on_boarding_data.dart';
 import 'package:evently/ui/screens/on_boarding/model/widget/dot_indicator.dart';
@@ -28,7 +29,7 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              AppImages.onBoardingLogo,
+              AppAssets.onBoardingLogo,
               width: 159,
               height: 50,
             ),
@@ -43,7 +44,7 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
-                itemCount: OnBoardingData.onBoardingList.length,
+                itemCount: OnBoardingData.getOnBoardingList(context).length,
                 onPageChanged: (index) {
                   setState(() {
                     _currentPage = index;
@@ -51,7 +52,7 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
                 },
                 itemBuilder: (context, index) {
                   return PageViewItemWidget(
-                    data: OnBoardingData.onBoardingList[index],
+                    data: OnBoardingData.getOnBoardingList(context)[index],
                   );
                 },
               ),
@@ -89,7 +90,7 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                    OnBoardingData.onBoardingList.length,
+                    OnBoardingData.getOnBoardingList(context).length,
                         (index) => DotIndicator(isActive: index == _currentPage),
                   ),
                 ),
@@ -98,7 +99,7 @@ class _OnBoardingPagesScreenState extends State<OnBoardingPagesScreen> {
                 IconButton(
                   onPressed: () {
                     if (_currentPage <
-                        OnBoardingData.onBoardingList.length -1) {
+                        OnBoardingData.getOnBoardingList(context).length -1) {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.easeInOut,

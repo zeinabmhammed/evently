@@ -1,60 +1,12 @@
-import 'dart:convert';
-
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class AppColors {
-  static const Color lightPrimary = Color(0xFF5669FF);
-  static const Color red = Color(0xFFFF5659);
-  static const Color backgroundColor = Color(0xFFF2FEFF);
-  static const Color black = Color(0xFF1C1C1C);
-  static const Color darkBackground = Color(0xFF101127);
-  static const Color grey = Color(0xFF7B7B7B);
-}
-
-class AppImages {
-  //png images
-  // Splash Screen
-  static const String splashLogo = "assets/images/splashLogo.png";
-
-  // onboarding
-  static const String onBoardingLogo = "assets/images/onboardingLogo.png";
-  static const String firstOnBoarding = "assets/images/FirstOnBoarding.png";
-  static const String secondOnBoarding = "assets/images/SecondOnBoarding.png";
-  static const String thirdOnBoarding = "assets/images/thirdOnBoarding.png";
-  static const String fourthOnBoarding = "assets/images/ForthOnBoarding.png";
-
-  //forget password
-  static const String forgetPassword = "assets/images/forgetPasswordPic.png";
-
-  //homeScreen
-  static const String birthdayCard = "assets/images/birthday_home.png";
-  static const String sportCard = "assets/images/sport_home.png";
-  static const String meetingCard = "assets/images/meeting_home.png";
-  static const String gamingCard = "assets/images/gaming_home.png";
-  static const String eatingCard = "assets/images/eating_home.png";
-  static const String holidayCard = "assets/images/holiday_home.png";
-  static const String exhibitionCard = "assets/images/ehibition_home.png";
-  static const String workShopCard = "assets/images/workshop_home.png";
-  static const String bookClubCard = "assets/images/BookClub_home.png";
-
-
-  //Svg images
-  // icons
-  static const String mapIcon = "assets/svg/map_icon.svg";
-  static const String homeIcon = "assets/svg/Home 1.svg";
-  static const String heartIcon = "assets/svg/Heart.svg";
-  static const String profileIcon = "assets/svg/profile.svg";
-
-  static const String homeFill = "assets/svg/fill_home.svg";
-  static const String mapFill = "assets/svg/fill_map.svg";
-  static const String heartFill = "assets/svg/fill_heart.svg";
-  static const String profileFill = "assets/svg/fill_profile.svg";
-}
 
 class AppThemes {
   static var lightTheme = ThemeData(
     colorScheme: ColorScheme.light(primary: AppColors.lightPrimary),
+
+    focusColor: AppColors.backgroundColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.backgroundColor,
       surfaceTintColor: Colors.transparent,
@@ -70,15 +22,14 @@ class AppThemes {
     ),
 
     textTheme: TextTheme(
-
       bodyLarge: GoogleFonts.inter(
-        color: AppColors.backgroundColor,
+        color: AppColors.black,
         fontWeight: FontWeight.w700,
         fontSize: 24,
       ),
 
       bodyMedium: GoogleFonts.inter(
-        color: Colors.black,
+        color: AppColors.lightPrimary,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
@@ -116,15 +67,16 @@ class AppThemes {
         borderSide: BorderSide(color: AppColors.grey),
       ),
       labelStyle: GoogleFonts.inter(
-          color: AppColors.grey,
-          fontSize: 16,
-          fontWeight: FontWeight.w500),
+        color: AppColors.grey,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
       hintStyle: GoogleFonts.inter(
-          color: AppColors.grey,
-          fontSize: 16,
-          fontWeight: FontWeight.w500),
-     contentPadding: EdgeInsets.all(16.0),
-
+        color: AppColors.grey,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      contentPadding: EdgeInsets.all(16.0),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -143,7 +95,8 @@ class AppThemes {
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: AppColors.backgroundColor,
-      backgroundColor: AppColors.lightPrimary,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       selectedIconTheme: IconThemeData(
         color: AppColors.backgroundColor,
         size: 33,
@@ -151,28 +104,46 @@ class AppThemes {
       unselectedIconTheme: IconThemeData(color: AppColors.black, size: 27),
       selectedLabelStyle: TextStyle(
         color: AppColors.backgroundColor,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
       unselectedLabelStyle: TextStyle(
         color: AppColors.black,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
     ),
-    bottomAppBarTheme: BottomAppBarThemeData(color: AppColors.lightPrimary),
+
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.lightPrimary,
+      foregroundColor: AppColors.backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(75),
+        side: BorderSide(color: AppColors.backgroundColor, width: 5),
+      ),
+    ),
+
+    bottomAppBarTheme: BottomAppBarThemeData(
+        color: AppColors.lightPrimary,
+        elevation: 0,
+    ),
+
     scaffoldBackgroundColor: AppColors.backgroundColor,
   );
 
-
+//------------------------------------------------------------------------
   static var darkTheme = ThemeData(
-    colorScheme: ColorScheme.dark(primary: AppColors.lightPrimary),
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.darkBackground,
+    ),
+    focusColor: AppColors.lightPrimary,
 
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBackground,
       surfaceTintColor: Colors.transparent,
+
       titleTextStyle: GoogleFonts.jockeyOne(
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -180,32 +151,37 @@ class AppThemes {
       ),
 
       centerTitle: true,
-      iconTheme: IconThemeData(color: AppColors.lightPrimary),
+      iconTheme: IconThemeData(color: AppColors.backgroundColor),
     ),
 
     textTheme: TextTheme(
-      bodyLarge: GoogleFonts.jockeyOne(
-        color: Colors.white,
+      bodyLarge: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
         fontWeight: FontWeight.bold,
-        fontSize: 20,
+        fontSize: 24,
+      ),
+      bodyMedium: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
 
       titleLarge: GoogleFonts.inter(
-        color: Colors.white,
+        color: AppColors.backgroundColor,
         fontSize: 24,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
 
       titleMedium: GoogleFonts.inter(
-        color: Colors.white,
+        color: AppColors.backgroundColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
 
       titleSmall: GoogleFonts.inter(
-        color: Colors.white,
+        color: AppColors.black,
         fontSize: 16,
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
@@ -227,27 +203,41 @@ class AppThemes {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: AppColors.lightPrimary,
+      backgroundColor: Colors.transparent,
+      selectedItemColor: AppColors.backgroundColor,
+      elevation: 0,
       selectedIconTheme: IconThemeData(
         color: AppColors.backgroundColor,
         size: 33,
       ),
-      unselectedIconTheme: IconThemeData(color:Colors.white, size: 27),
+      unselectedIconTheme: IconThemeData(color: Colors.white, size: 27),
       selectedLabelStyle: TextStyle(
         color: AppColors.backgroundColor,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
       unselectedLabelStyle: TextStyle(
-        color:Colors.white,
-        fontSize: 12,
+        color: Colors.white,
+        fontSize: 10,
         fontWeight: FontWeight.bold,
         letterSpacing: 0,
       ),
     ),
 
-    bottomAppBarTheme: BottomAppBarThemeData(color: AppColors.lightPrimary),
-    scaffoldBackgroundColor: AppColors.darkBackground,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.darkBackground,
+      foregroundColor: AppColors.backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(75),
+      side: BorderSide(color: AppColors.backgroundColor, width: 5),
+      ),
+    ),
+
+    bottomAppBarTheme: BottomAppBarThemeData(
+        color: AppColors.darkBackground,
+    ),
+
+    scaffoldBackgroundColor: AppColors.darkScaffold,
   );
 }
