@@ -1,5 +1,6 @@
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/extensions/context_extension.dart';
-import 'package:evently/ui/design/design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,14 +15,15 @@ class EventCard extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.lightPrimary,width: 1),
         image: DecorationImage(
-          image: AssetImage(AppImages.birthdayCard),
+          image: AssetImage(AppAssets.birthdayCard),
           fit: BoxFit.cover,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min ,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8),
@@ -31,8 +33,19 @@ class EventCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Text("21",style: context.fonts.titleMedium?.copyWith(color: AppColors.lightPrimary),),
-                Text("Nov",style: context.fonts.titleSmall?.copyWith(color: AppColors.lightPrimary,fontWeight: FontWeight.w700),),
+                Text(
+                  "21",
+                  style: context.fonts.titleMedium?.copyWith(
+                    color: AppColors.lightPrimary,
+                  ),
+                ),
+                Text(
+                  "Nov",
+                  style: context.fonts.titleSmall?.copyWith(
+                    color: AppColors.lightPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ],
             ),
           ),
@@ -46,21 +59,24 @@ class EventCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("This is a Birthday Party ",
-                  style: context.fonts.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
+                Expanded(
+                  child: Text(
+                    "This is a Birthday Party ",
+                    style: context.fonts.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
-                  child: SvgPicture.asset(AppImages.heartIcon,
+                  onTap: () {},
+                  child: SvgPicture.asset(
+                    AppAssets.heartIcon,
                     color: AppColors.lightPrimary,
                   ),
                 ),
               ],
             ),
-          )
-
+          ),
         ],
       ),
     );

@@ -1,4 +1,5 @@
-import 'package:evently/ui/design/design.dart';
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/ui/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(AppImages.forgetPassword,
+          Image.asset(AppAssets.forgetPassword,
             width: 361,
             height: 361,
           ),

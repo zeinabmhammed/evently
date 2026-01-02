@@ -5,6 +5,8 @@ enum AppRoutes{
   LoginScreen  ("login"),
   ForgetPasswordScreen  ("forget_password"),
   HomeScreen  ("home"),
+  AddEventScreen  ("add_event"),
+  MapEvent ("map_event"),
 
   ;
 

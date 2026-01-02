@@ -1,7 +1,8 @@
+import 'package:evently/core/resources/app_assets.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/ui/common/language_switcher.dart';
 import 'package:evently/ui/common/theme_switcher.dart';
-import 'package:evently/ui/design/design.dart';
 import 'package:evently/ui/screens/on_boarding/on_boarding_pages_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Image.asset(AppImages.onBoardingLogo,
+            Image.asset(AppAssets.onBoardingLogo,
               width: 159,
               height: 50,
             ),
@@ -27,7 +28,7 @@ class OnBoardingScreen extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16.0,right: 16.0,bottom: 16.0,top: 28,),
         child: Column(
           children: [
-            Image.asset(AppImages.firstOnBoarding),
+            Image.asset(AppAssets.firstOnBoarding),
          SizedBox(height: 28),
             Expanded(
               child: Column(

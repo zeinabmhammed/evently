@@ -1,6 +1,5 @@
-import 'package:evently/ui/design/design.dart';
+import 'package:evently/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import '../on_boarding_data.dart';
 
 class PageViewItemWidget extends StatelessWidget {
