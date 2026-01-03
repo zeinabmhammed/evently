@@ -3,8 +3,8 @@ import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/ui/screens/add_event/add_event_screen.dart';
 import 'package:evently/ui/screens/home/tabs/favorites/favorite_tab.dart';
-import 'package:evently/ui/screens/add_event/map/map_event.dart';
 import 'package:evently/ui/screens/home/tabs/home_tabs/home_tab.dart';
+import 'package:evently/ui/screens/home/tabs/map/screens/map_tab.dart';
 import 'package:evently/ui/screens/home/tabs/profile/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentBottomNavIndex = 0;
   List<Widget> tabs = [
     HomeTab(),
-    MapEvent(),
+    MapTab(),
     AddEventScreen(),
     FavoriteTab(),
     ProfileTab(),

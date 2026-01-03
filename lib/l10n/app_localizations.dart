@@ -541,6 +541,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search'**
   String get search;
+
+  /// No description provided for @enter_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Title'**
+  String get enter_title;
+
+  /// No description provided for @enter_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Description'**
+  String get enter_description;
 }
 
 class _AppLocalizationsDelegate

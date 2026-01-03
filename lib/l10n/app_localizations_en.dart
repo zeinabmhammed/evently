@@ -234,4 +234,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search';
+
+  @override
+  String get enter_title => 'Please Enter Title';
+
+  @override
+  String get enter_description => 'Please Enter Description';
 }
