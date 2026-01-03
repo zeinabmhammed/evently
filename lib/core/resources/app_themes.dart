@@ -7,6 +7,12 @@ class AppThemes {
     colorScheme: ColorScheme.light(primary: AppColors.lightPrimary),
 
     focusColor: AppColors.backgroundColor,
+    indicatorColor: Colors.grey,
+    hintColor: Colors.grey,
+    iconTheme: IconThemeData(color: AppColors.black),
+   dividerColor: AppColors.backgroundColor,
+
+
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.backgroundColor,
       surfaceTintColor: Colors.transparent,
@@ -30,6 +36,11 @@ class AppThemes {
 
       bodyMedium: GoogleFonts.inter(
         color: AppColors.lightPrimary,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
+      bodySmall: GoogleFonts.inter(
+        color: AppColors.black,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
@@ -77,6 +88,7 @@ class AppThemes {
         fontWeight: FontWeight.w500,
       ),
       contentPadding: EdgeInsets.all(16.0),
+      fillColor:Colors.grey,
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -139,7 +151,10 @@ class AppThemes {
       primary: AppColors.darkBackground,
     ),
     focusColor: AppColors.lightPrimary,
-
+    indicatorColor: AppColors.backgroundColor,
+    hintColor: AppColors.backgroundColor,
+    iconTheme: IconThemeData(color: AppColors.backgroundColor),
+    dividerColor: AppColors.black,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBackground,
       surfaceTintColor: Colors.transparent,
@@ -165,6 +180,11 @@ class AppThemes {
         fontWeight: FontWeight.w500,
         fontSize: 16,
       ),
+      bodySmall: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
 
       titleLarge: GoogleFonts.inter(
         color: AppColors.backgroundColor,
@@ -186,6 +206,29 @@ class AppThemes {
         fontWeight: FontWeight.w500,
         letterSpacing: 0,
       ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.lightPrimary),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.lightPrimary),
+      ),
+      labelStyle: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      hintStyle: GoogleFonts.inter(
+        color: AppColors.backgroundColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      contentPadding: EdgeInsets.all(16.0),
+      fillColor: AppColors.backgroundColor,
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
