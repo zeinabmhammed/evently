@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 
 typedef Validator = String? Function(String?);
 class CustomFormField extends StatefulWidget {
-  String label;
-  IconData prefixIcon;
+  String? label;
+  String? hintText;
+  Widget? prefixIcon;
   TextInputType keyboardType;
   bool isPassword;
   Validator? validator;
   TextEditingController? controller;
+  int? maxLines;
 
   CustomFormField({
-    required this.label,
-    required this.prefixIcon,
+    this.label,
+    this.prefixIcon,
+    this.hintText,
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
+    this.maxLines=1,
     this.validator,
     this.controller,
     super.key,
@@ -38,6 +42,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
             keyboardType: widget.keyboardType,
             obscureText: widget.isPassword && secureText,
             cursorColor: Theme.of(context).colorScheme.primary,
+            maxLines: widget.maxLines,
             style: TextStyle(
               color: AppColors.lightPrimary,
               fontSize: 18,
@@ -45,9 +50,17 @@ class _CustomFormFieldState extends State<CustomFormField> {
             ),
             decoration: InputDecoration(
               labelText: widget.label,
-              prefixIcon: Icon(widget.prefixIcon,
-                color: Theme.of(context).iconTheme.color,
+              hintText: widget.hintText,
+              hintStyle: TextStyle(
+                color: Theme.of(context).inputDecorationTheme.fillColor,
+                fontSize: 16,
               ),
+              prefixIcon: widget.prefixIcon != null
+                  ? Padding(
+                padding: const EdgeInsets.all(10),
+                child: widget.prefixIcon,
+              )
+                  : null,
               suffixIcon: widget.isPassword==true ?
               InkWell(
                 onTap: () {

@@ -45,4 +45,15 @@ class AppAssets {
   static const String profileFill = "assets/svg/fill_profile.svg";
 
   static const String searchIcon = "assets/svg/SearchIcon.svg";
+
+  static const String noteEditIcon = "assets/svg/Note_Edit.svg";
+  static const String locationIcon = "assets/svg/location_icon.svg";
+  static const String calendarIcon = "assets/svg/Calendar_Days.svg";
+  static const String clockIcon = "assets/svg/Clock.svg";
+  static const String deleteIcon = "assets/svg/delete2.svg";
+  static const String editIcon = "assets/svg/Edit 2.svg";
+
+  static const String emailIcon = "assets/svg/email.svg";
+  static const String passwordIcon = "assets/svg/password.svg";
+  static const String nameIcon = "assets/svg/phone.svg";
 }

@@ -8,6 +8,7 @@ import 'package:evently/ui/common/validators.dart';
 import 'package:evently/ui/providers/auth_provider.dart';
 import 'package:evently/ui/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 CustomFormField(
                   label: AppLocalizations.of(context)!.email,
-                  prefixIcon: Icons.email_rounded,
+                  prefixIcon: SvgPicture.asset(AppAssets.emailIcon),
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: (text) {
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomFormField(
                   label: AppLocalizations.of(context)!.password,
                   controller: passwordController,
-                  prefixIcon: Icons.lock,
+                  prefixIcon: SvgPicture.asset(AppAssets.passwordIcon),
                   keyboardType: TextInputType.text,
                   isPassword: true,
                   validator: (text) {

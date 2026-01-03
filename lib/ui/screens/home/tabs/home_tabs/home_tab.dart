@@ -10,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
-import '../../../../common/custom_tab_bar.dart';
+import '../../../../common/custom_event_tab_bar.dart';
+import '../../../../common/event_tab.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -21,11 +22,12 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   int selectedIndex = 0;
+  EventTab selectedCategory = EventTab.all;
 
   @override
   Widget build(BuildContext context) {
+    final tabs = getEventTabs(context);
     AppAuthProvider provider = Provider.of<AppAuthProvider>(context);
-
     var user = provider.getUser();
 
     return Scaffold(
@@ -140,17 +142,23 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ],
         ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: CustomTabBar(
-            selectedIndex: selectedIndex,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-          ),
-        ),
+       bottom: PreferredSize(
+         preferredSize: Size.fromHeight(50),
+         child: Padding(
+           padding: const EdgeInsets.only(bottom: 15,top: 5),
+           child: CustomEventTabBar(
+             tabsMap: tabs,
+             selectedTab: selectedCategory,
+             showAll: true,
+             isInverse: true,
+             onTabChanged: (newTab) {
+               setState(() {
+                 selectedCategory = newTab;
+               });
+             },
+           ),
+         ),
+       ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
