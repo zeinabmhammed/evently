@@ -1,6 +1,6 @@
 import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/providers/language_provider.dart';
+import 'package:evently/providers/language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

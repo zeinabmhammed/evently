@@ -2,16 +2,16 @@ import 'package:evently/core/resources/app_assets.dart';
 import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/extensions/context_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/providers/auth_provider.dart';
-import 'package:evently/ui/providers/language_provider.dart';
-import 'package:evently/ui/providers/theme_provider.dart';
 import 'package:evently/ui/screens/home/tabs/home_tabs/widgets/event_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
-import '../../../../common/custom_event_tab_bar.dart';
-import '../../../../common/event_tab.dart';
+import '../../../../../common/custom_event_tab_bar.dart';
+import '../../../../../common/event_tab.dart';
+import '../../../../../providers/auth_provider.dart';
+import '../../../../../providers/language_provider.dart';
+import '../../../../../providers/theme_provider.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});

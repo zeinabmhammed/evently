@@ -1,14 +1,15 @@
 import 'package:evently/core/resources/app_assets.dart';
 import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/routes.dart';
-import 'package:evently/ui/common/custom_form_Field.dart';
-import 'package:evently/ui/common/language_switcher.dart';
-import 'package:evently/ui/common/validators.dart';
-import 'package:evently/ui/providers/auth_provider.dart';
+import 'package:evently/core/resources/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+
+import '../../../common/custom_form_Field.dart';
+import '../../../common/language_switcher.dart';
+import '../../../common/validators.dart';
+import '../../../providers/auth_provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});

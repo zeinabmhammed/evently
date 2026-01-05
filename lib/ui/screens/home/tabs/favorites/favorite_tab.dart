@@ -1,9 +1,9 @@
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../../common/custom_search_field.dart';
 import '../../../../../core/resources/app_assets.dart';
 import '../../../../../core/resources/app_colors.dart';
-import '../../../../common/custom_search_field.dart';
 import '../home_tabs/widgets/event_card.dart';
 
 class FavoriteTab extends StatelessWidget {

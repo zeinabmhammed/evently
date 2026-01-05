@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/core/resources/app_themes.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/common/app_shared_preferences.dart';
-import 'package:evently/routes.dart';
-import 'package:evently/ui/providers/auth_provider.dart';
-import 'package:evently/ui/providers/language_provider.dart';
-import 'package:evently/ui/providers/theme_provider.dart';
+import 'package:evently/core/resources/app_routes.dart';
+import 'package:evently/providers/auth_provider.dart';
+import 'package:evently/providers/language_provider.dart';
+import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/ui/screens/add_event/add_event_screen.dart';
 import 'package:evently/ui/screens/add_event/map/map_event.dart';
 import 'package:evently/ui/screens/home/home_screen.dart';
@@ -16,11 +16,13 @@ import 'package:evently/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'common/app_shared_preferences.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseFirestore.instance.disableNetwork();
   await AppSharedPreferences.init();
 
   runApp(
@@ -65,7 +67,7 @@ class MyApp extends StatelessWidget {
             ForgetPasswordScreen(),
         AppRoutes.HomeScreen.route: (context) => HomeScreen(),
         AppRoutes.AddEventScreen.route: (context) => AddEventScreen(),
-        AppRoutes.MapEvent.route:(context)=>MapEvent()
+        AppRoutes.MapEvent.route: (context) => MapEvent(),
       },
 
       initialRoute: authProvider.isLoggedInBefore()

@@ -1,10 +1,10 @@
+import 'package:evently/common/language_switcher.dart';
 import 'package:evently/core/resources/app_assets.dart';
 import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/common/language_switcher.dart';
-import 'package:evently/ui/common/theme_switcher.dart';
 import 'package:evently/ui/screens/on_boarding/on_boarding_pages_screen.dart';
 import 'package:flutter/material.dart';
+import '../../../common/theme_switcher.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

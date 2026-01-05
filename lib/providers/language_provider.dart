@@ -1,5 +1,6 @@
-import 'package:evently/ui/common/app_shared_preferences.dart';
 import 'package:flutter/material.dart';
+
+import '../common/app_shared_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
   late Locale _locale;

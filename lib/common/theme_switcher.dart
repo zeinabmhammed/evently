@@ -1,8 +1,9 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:evently/ui/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
+
+import '../../providers/theme_provider.dart';
 
 class ThemeSwitcher extends StatefulWidget {
   ThemeSwitcher(){

@@ -1,15 +1,15 @@
 import 'package:evently/core/resources/app_assets.dart';
 import 'package:evently/core/resources/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/common/custom_elevated_button.dart';
-import 'package:evently/ui/common/custom_event_tab_bar.dart';
-import 'package:evently/ui/common/custom_form_Field.dart';
 import 'package:evently/ui/screens/add_event/widget/date_or_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import '../../../routes.dart';
-import '../../common/event_tab.dart';
+import '../../../common/custom_elevated_button.dart';
+import '../../../common/custom_event_tab_bar.dart';
+import '../../../common/custom_form_Field.dart';
+import '../../../common/event_tab.dart';
+import '../../../core/resources/app_routes.dart';
 
 class AddEventScreen extends StatefulWidget {
   const AddEventScreen({super.key});
