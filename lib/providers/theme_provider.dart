@@ -1,6 +1,5 @@
+import 'package:evently/core/resources/common_widgets/app_shared_preferences.dart';
 import 'package:flutter/material.dart';
-
-import '../common/app_shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
