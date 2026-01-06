@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/core/resources/common_widgets/app_shared_preferences.dart';
 import 'package:evently/core/resources/theme/app_themes.dart';
 import 'package:evently/features/add_event/presentation/screens/add_event_screen.dart';
@@ -21,6 +22,7 @@ import 'core/firebase/firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseFirestore.instance.disableNetwork();
   await AppSharedPreferences.init();
 
   runApp(

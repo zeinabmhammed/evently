@@ -8,7 +8,6 @@ class CustomEventTabBar extends StatelessWidget {
   final Function(EventTab) onTabChanged;
   final bool showAll;
   final bool isInverse;
-
   const CustomEventTabBar({
     super.key,
     required this.tabsMap,
@@ -17,28 +16,24 @@ class CustomEventTabBar extends StatelessWidget {
     this.showAll = true,
     this.isInverse = false,
   });
-
   @override
   Widget build(BuildContext context) {
     final entries = tabsMap.entries
         .where((e) => showAll || e.key != EventTab.all)
         .toList();
-
     return SizedBox(
       height: 45,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 8,),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         itemCount: entries.length,
         separatorBuilder: (_, __) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           final entry = entries[index];
           final isSelected = selectedTab == entry.key;
-
           Color bgColor;
           Color contentColor;
           BorderSide border;
-
           if (isSelected) {
             bgColor = isInverse ? Colors.white : AppColors.lightPrimary;
             contentColor = isInverse ? AppColors.lightPrimary : Colors.white;
@@ -53,7 +48,6 @@ class CustomEventTabBar extends StatelessWidget {
               width: 1.5,
             );
           }
-
           return InkWell(
             onTap: () => onTabChanged(entry.key),
             child: Container(
