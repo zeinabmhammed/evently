@@ -236,4 +236,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get search => 'بحث';
+
+  @override
+  String get enter_title => 'من فضلك أدخل العنوان';
+
+  @override
+  String get enter_description => 'من فضلك أدخل الوصف';
 }

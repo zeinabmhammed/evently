@@ -74,7 +74,9 @@
     "profile": "الملف الشخصي",
     "welcome_back": "أهلًا بعودتك ✨",
     "search_for_event": "ابحث عن فعالية",
-    "search": "بحث"
+    "search": "بحث",
+     "enter_title": "من فضلك أدخل العنوان",
+      "enter_description": "من فضلك أدخل الوصف"
 
 
 }

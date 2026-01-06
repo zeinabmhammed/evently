@@ -1,26 +1,28 @@
-import 'package:evently/core/resources/app_themes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently/core/resources/common_widgets/app_shared_preferences.dart';
+import 'package:evently/core/resources/theme/app_themes.dart';
+import 'package:evently/features/add_event/presentation/screens/add_event_screen.dart';
+import 'package:evently/features/auth/presentation/screens/forget_password/forget_password_screen.dart';
+import 'package:evently/features/auth/presentation/screens/login/login_screen.dart';
+import 'package:evently/features/auth/presentation/screens/register/register_screen.dart';
+import 'package:evently/features/main_layout/main_layout.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/ui/common/app_shared_preferences.dart';
-import 'package:evently/routes.dart';
-import 'package:evently/ui/providers/auth_provider.dart';
-import 'package:evently/ui/providers/language_provider.dart';
-import 'package:evently/ui/providers/theme_provider.dart';
-import 'package:evently/ui/screens/add_event/add_event_screen.dart';
-import 'package:evently/ui/screens/add_event/map/map_event.dart';
-import 'package:evently/ui/screens/home/home_screen.dart';
-import 'package:evently/ui/screens/login/login_screen.dart';
-import 'package:evently/ui/screens/on_boarding/on_boarding_screen.dart';
-import 'package:evently/ui/screens/forget_password/forget_password_screen.dart';
-import 'package:evently/ui/screens/register/register_screen.dart';
-import 'package:evently/ui/splash/splash_screen.dart';
+import 'package:evently/core/routes/app_routes.dart';
+import 'package:evently/providers/auth_provider.dart';
+import 'package:evently/providers/language_provider.dart';
+import 'package:evently/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'features/main_layout/map/widgets/map_event.dart';
+import 'features/on_boarding/presentation/screens/on_boarding_screen.dart';
+import 'features/splash/presentation/screens/splash_screen.dart';
+import 'core/firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseFirestore.instance.disableNetwork();
   await AppSharedPreferences.init();
 
   runApp(
@@ -44,9 +46,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider provider = Provider.of<ThemeProvider>(context);
-    LanguageProvider languageProvider = Provider.of<LanguageProvider>(context);
-    AppAuthProvider authProvider = Provider.of<AppAuthProvider>(context);
+    final provider = context.watch<ThemeProvider>();
+    final languageProvider = context.watch<LanguageProvider>();
+    final authProvider = context.watch<AppAuthProvider>();
 
     return MaterialApp(
       title: 'Evently App',
@@ -63,13 +65,13 @@ class MyApp extends StatelessWidget {
         AppRoutes.RegisterScreen.route: (context) => RegisterScreen(),
         AppRoutes.ForgetPasswordScreen.route: (context) =>
             ForgetPasswordScreen(),
-        AppRoutes.HomeScreen.route: (context) => HomeScreen(),
+        AppRoutes.MainLayout.route: (context) => MainLayout(),
         AppRoutes.AddEventScreen.route: (context) => AddEventScreen(),
-        AppRoutes.MapEvent.route:(context)=>MapEvent()
+        AppRoutes.MapEvent.route: (context) => MapEvent(),
       },
 
       initialRoute: authProvider.isLoggedInBefore()
-          ? AppRoutes.HomeScreen.route
+          ? AppRoutes.MainLayout.route
           : AppRoutes.OnBoardingScreen.route,
 
       localizationsDelegates: AppLocalizations.localizationsDelegates,
